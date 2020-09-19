@@ -10,7 +10,7 @@ with open('diabetes.csv', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     for row in reader:
         BMI.append(row[0])
-        
+
         if row[3] == 1:
             randomConfidence = random.uniform(0, 1)
             if randomConfidence > 0.2:
