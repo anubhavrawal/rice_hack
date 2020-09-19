@@ -3,7 +3,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 
 # loading the dataset
-dataset = loadtxt('diabetes.csv', delimiter=',')
+dataset = loadtxt('diabetes2.csv', delimiter=',')
 # spliting into input (X) and output (y) variables
 X = dataset[:,0:3]
 y = dataset[:,3]

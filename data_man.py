@@ -10,7 +10,16 @@ with open('diabetes.csv', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     for row in reader:
         BMI.append(row[0])
-        parents.append(random.randint(0, 1))
+        
+        if row[3] == 1:
+            randomConfidence = random.uniform(0, 1)
+            if randomConfidence > 0.2:
+                parents.append(1)
+            else:
+                parents.append(0)
+        else:
+            parents.append(0)
+
         age.append(row[2])
         outcome.append(row[3])
         

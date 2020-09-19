@@ -2,7 +2,7 @@ from numpy import loadtxt
 from tensorflow import keras
 
 # load the dataset
-dataset = loadtxt('diabetes2.csv', delimiter=',')
+dataset = loadtxt('test.csv', delimiter=',')
 # split into input (X) and output (y) variables
 X = dataset[:,0:3]
 y = dataset[:,3]
