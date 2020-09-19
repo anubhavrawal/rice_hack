@@ -1,0 +1,13 @@
+#root .dashboardContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#root .dashboardContent .dashboardRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-right: 40px;
+    width: 50%;
+}

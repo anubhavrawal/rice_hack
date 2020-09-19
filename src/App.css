@@ -3,6 +3,10 @@
   padding: 30px;
 }
 
+.App hr {
+    width: 100%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
