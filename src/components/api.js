@@ -1,21 +1,22 @@
 //This function sets values for the user's preference.
 //Use "" if the value is NULL or the user doesn't have anything to put there
 //numNum is how many dishes we want to load
-function preferences(dietBool, intolerancesBool, numNum) {
+export function preferences(dietBool, intolerancesBool, numNum) {
 	diet = dietBool
 	intolerances = intolerancesBool
 	num = numNum
 	apiKey = "b599358e847b4871a0cd0b9d625b31a1"
-	XMLRequest()
+	xmlRequest()
 }
-diet = ""
-intolerances = ""
-num = 0
-data = ""
+var diet = ""
+var intolerances = ""
+var num = 0
+var data = ""
+var apiKey = ""
 
 //Makes the call to get info from spoonacular and stores the data
-function XMLRequest() {
-	requestURL = "https://api.spoonacular.com/recipes/complexSearch?diet="+diet+"intolerances="+intolerances+"&addRecipeInformation=true&addRecipeNutrition=true&number="+num+"&apiKey="+apiKey
+export function xmlRequest() {
+	var requestURL = "https://api.spoonacular.com/recipes/complexSearch?diet="+diet+"intolerances="+intolerances+"&addRecipeInformation=true&addRecipeNutrition=true&number="+num+"&apiKey="+apiKey
 	var request = new XMLHttpRequest()
 	request.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
@@ -34,7 +35,7 @@ function XMLRequest() {
 //Makes the entires on #root
 function makeBody(menu) {
 	const app = document.getElementById('root')
-  for(i = 0; i < num; i++)
+  for(var i = 0; i < num; i++)
 	{
 		const text = document.createElement('p')
 		text.textContent = menu.results[i].title
@@ -84,3 +85,5 @@ function close() {
 	var popup = document.getElementById("popup")
 	popup.remove()
 }
+
+// export preferences, xmlRequest;
