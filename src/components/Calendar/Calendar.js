@@ -55,7 +55,6 @@ export default class Calendar extends Component {
     }
 
     render() {
-        console.log(this.state.dates);
         return (
             <div className="calendar">
                 <Heading text="Calendar" />
