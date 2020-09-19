@@ -6,7 +6,7 @@ export default class TextField extends Component {
     render() {
         return (
             <div className="textField">
-                <Input size="small" label={this.props.label} placeholder={this.props.placeholder} type={this.props.type} name={this.props.type} />
+                <Input size="small" label={this.props.label} placeholder={this.props.placeholder} type={this.props.type} name={this.props.type} onChange={this.props.onChange} />
             </div>
         );
     }
