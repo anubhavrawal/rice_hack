@@ -1,0 +1,9 @@
+#root .calendarColumn {
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#root .calendarColumn {
+    font-size: 18px;
+}

@@ -9,5 +9,5 @@
     flex-direction: column;
     justify-content: space-around;
     padding-right: 40px;
-    width: 50%;
+    min-width: 55vw;
 }
