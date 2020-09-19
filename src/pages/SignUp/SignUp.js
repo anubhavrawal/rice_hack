@@ -22,10 +22,15 @@ export default class SignUp extends Component {
             weight: '',
             age: '',
             dailyActivity: '',
-            stress: ''
+            stress: '',
+            dietaryRestrictions: [],
+            allergies: [],
+            conditions: [],
+            familyHistory: []
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleChangeCheck = this.handleChangeCheck.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -36,6 +41,29 @@ export default class SignUp extends Component {
         this.setState({
             [name]: target.value
         });
+    }
+
+    handleChangeCheck(event){
+        const target = event.currentTarget;
+        const name = target.textContent;
+        const category = target.className.split(' ')[target.className.split(' ').length - 1]
+
+        if(!this.state.[category].includes(name)){
+            this.setState({
+                [category]: [...this.state.[category], name]
+            });
+        }
+        else {
+            var temp = [];
+            this.state.[category].forEach((item, i) => {
+                if(item !== name){
+                    temp.push(item);
+                }
+            });
+            this.setState({
+                [category]: temp
+            });
+        }
     }
 
     handleSubmit(event){
@@ -51,7 +79,11 @@ export default class SignUp extends Component {
                     height: this.state.height,
                     weight: this.state.weight,
                     dailyActivity: this.state.dailyActivity,
-                    stress: this.state.stress
+                    stress: this.state.stress,
+                    familyHistory: this.state.familyHistory,
+                    allergies: this.state.allergies,
+                    conditions: this.state.conditions,
+                    dietaryRestrictions: this.state.dietaryRestrictions
                 }).then(() => {
                     this.setState({
                         redirect: true
@@ -78,45 +110,45 @@ export default class SignUp extends Component {
                         <TextField label="Password" placeholder="Password" type="password" onChange={this.handleChange} />
                         <div>
                             <p>Dietary Restrictions</p>
-                            <CheckBox label="Gluten Free" />
-                            <CheckBox label="Ketogenic" />
-                            <CheckBox label="Vegan" />
-                            <CheckBox label="Vegetarian" />
-                            <CheckBox label="Lacto-vegetarian" />
-                            <CheckBox label="Ovo-vegetarian" />
-                            <CheckBox label="Pescetarian" />
-                            <CheckBox label="Paleo" />
-                            <CheckBox label="Primal" />
-                            <CheckBox label="Whole30" />
+                            <CheckBox label="Gluten Free" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Ketogenic" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Vegan" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Lacto-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Ovo-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Pescetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Paleo" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Primal" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            <CheckBox label="Whole30" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
                         </div>
                         <div>
                             <p>Allergies</p>
-                            <CheckBox label="Dairy" />
-                            <CheckBox label="Egg" />
-                            <CheckBox label="Grain" />
-                            <CheckBox label="Seafood" />
-                            <CheckBox label="Peanut" />
-                            <CheckBox label="Sesame" />
-                            <CheckBox label="Shellfish" />
-                            <CheckBox label="Gluten" />
-                            <CheckBox label="Soy" />
-                            <CheckBox label="Sulfite" />
-                            <CheckBox label="Tree Nut" />
-                            <CheckBox label="Wheat" />
+                            <CheckBox label="Dairy" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Egg" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Grain" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Seafood" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Peanut" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Sesame" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Shellfish" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Gluten" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Soy" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Sulfite" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Tree Nut" onChange={this.handleChangeCheck} className="allergies" />
+                            <CheckBox label="Wheat" onChange={this.handleChangeCheck} className="allergies" />
                         </div>
                         <div>
                             <p>Pre-existing Conditions</p>
-                            <CheckBox label="Diabetic" />
-                            <CheckBox label="Heart Conditions" />
-                            <CheckBox label="High Blood Pressure" />
-                            <CheckBox label="High Cholesterol" />
+                            <CheckBox label="Diabetic" onChange={this.handleChangeCheck} className="conditions" />
+                            <CheckBox label="Heart Conditions" onChange={this.handleChangeCheck} className="conditions" />
+                            <CheckBox label="High Blood Pressure" onChange={this.handleChangeCheck} className="conditions" />
+                            <CheckBox label="High Cholesterol" onChange={this.handleChangeCheck} className="conditions" />
                         </div>
                         <div>
                             <p>Family History</p>
-                            <CheckBox label="Diabetic" />
-                            <CheckBox label="Heart Conditions" />
-                            <CheckBox label="High Blood Pressure" />
-                            <CheckBox label="High Cholesterol" />
+                            <CheckBox label="Diabetic" onChange={this.handleChangeCheck} className="familyHistory" />
+                            <CheckBox label="Heart Conditions" onChange={this.handleChangeCheck} className="familyHistory" />
+                            <CheckBox label="High Blood Pressure" onChange={this.handleChangeCheck} className="familyHistory" />
+                            <CheckBox label="High Cholesterol" onChange={this.handleChangeCheck} className="familyHistory" />
                         </div>
                         <TextField label="Age" placeholder="Age" type="age" onChange={this.handleChange} />
                         <TextField label="Height" placeholder="Height (in inches)" type="height" onChange={this.handleChange} />
