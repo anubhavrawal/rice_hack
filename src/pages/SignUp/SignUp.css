@@ -1,0 +1,13 @@
+#root .signUp button {
+    margin-top: 15px;
+}
+
+#root .signInButton {
+    margin-top: 25px;
+}
+
+#root .signUp p {
+    font-size: 16px;
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
