@@ -20,7 +20,7 @@ def prediction_dibeties(X):
 	# make probability predictions with the model
 	predictions = model.predict_classes(X)
 
-	return predictions
+	return predictions, 70
 
 	#for i in range(70):
 	#	print('%s => %d (expected %d)' % (X[i].tolist(), predictions[i], y[i]))
@@ -39,4 +39,8 @@ def prediction_cardio(X):
 	# make probability predictions with the model
 	predictions = model.predict_classes(X)
 
-	return predictions
+	return predictions, 50
+
+print(prediction_dibeties([[33.6,0,50]]) )
+
+print(prediction_cardio([[167,67,18068,1,0,0]]))
