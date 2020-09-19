@@ -45,7 +45,7 @@ export default class App extends Component {
             <div className="App">
                 {this.state.user ?
                     <Switch>
-                        <Route path="/" render={() => {<Dashboard userEmail={this.state.user.email}/>}}></Route>
+                        <Route path="/" render={() => <Dashboard userEmail={this.state.user.email}/>}></Route>
                     </Switch>
                     :
                     <Switch>
