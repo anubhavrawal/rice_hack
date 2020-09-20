@@ -6,6 +6,7 @@ import Calendar from '../../components/Calendar/Calendar';
 import ShoppingList from '../../components/ShoppingList/ShoppingList';
 import SignOutButton from '../../components/SignOutButton/SignOutButton';
 import Profile from "../../components/Profile/Profile";
+import firebase from "../../components/Firebase";
 
 export default class Dashboard extends Component {
     state = {
@@ -22,6 +23,10 @@ export default class Dashboard extends Component {
     }
 
     addItem = (obj, day) => {
+        firebase.firestore().collection('Users').doc(this.props.userEmail).get().then((user) => {
+                firebase.firestore().collection()
+            }
+        )
         let addedRecipesCopy = [...this.state.addedRecipes]
         console.log("Day", day)
         addedRecipesCopy[day].push(obj)
