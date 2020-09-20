@@ -48,7 +48,7 @@ export default class Dashboard extends Component {
                 </div>
                 <Heading text="Dashboard" icon="clipboard" />
                 <div className="dashboardContent">
-                    <Recipes addItem={this.addItem} />
+                    <Recipes addItem={this.addItem} userEmail={this.props.userEmail} />
                     <div className="dashboardRight">
                         <Calendar removeItem={this.removeItem} addedRecipes={this.state.addedRecipes}/>
                         <hr />

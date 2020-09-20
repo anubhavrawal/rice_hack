@@ -23,7 +23,8 @@ export default class SignUp extends Component {
             age: '',
             dailyActivity: '',
             stress: '',
-            dietaryRestrictions: [],
+            dietaryRestrictions: '',
+            biologicalSex: '',
             allergies: [],
             conditions: [],
             familyHistory: []
@@ -48,21 +49,33 @@ export default class SignUp extends Component {
         const name = target.textContent;
         const category = target.className.split(' ')[target.className.split(' ').length - 1]
 
-        if(!this.state.[category].includes(name)){
+        if(category === 'dietaryRestrictions'){
             this.setState({
-                [category]: [...this.state.[category], name]
+                dietaryRestrictions: name
+            });
+        }
+        else if(category === 'biologicalSex'){
+            this.setState({
+                biologicalSex: name
             });
         }
         else {
-            var temp = [];
-            this.state.[category].forEach((item, i) => {
-                if(item !== name){
-                    temp.push(item);
-                }
-            });
-            this.setState({
-                [category]: temp
-            });
+            if(!this.state.[category].includes(name)){
+                this.setState({
+                    [category]: [...this.state.[category], name]
+                });
+            }
+            else {
+                var temp = [];
+                this.state.[category].forEach((item, i) => {
+                    if(item !== name){
+                        temp.push(item);
+                    }
+                });
+                this.setState({
+                    [category]: temp
+                });
+            }
         }
     }
 
@@ -83,7 +96,8 @@ export default class SignUp extends Component {
                     familyHistory: this.state.familyHistory,
                     allergies: this.state.allergies,
                     conditions: this.state.conditions,
-                    dietaryRestrictions: this.state.dietaryRestrictions
+                    dietaryRestrictions: this.state.dietaryRestrictions,
+                    biologicalSex: this.state.biologicalSex
                 }).then(() => {
                     this.setState({
                         redirect: true
@@ -111,16 +125,16 @@ export default class SignUp extends Component {
                             <TextField label="Password" placeholder="Password" type="password" onChange={this.handleChange} />
                             <div>
                                 <p>Dietary Restrictions</p>
-                                <CheckBox label="Gluten Free" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Ketogenic" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Vegan" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Lacto-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Ovo-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Pescetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Paleo" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Primal" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                                <CheckBox label="Whole30" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Gluten Free" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Ketogenic" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Vegan" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Lacto-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Ovo-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Pescetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Paleo" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Primal" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
+                                <CheckBox label="Whole30" onChange={this.handleChangeCheck} className="dietaryRestrictions" checked={this.state.dietaryRestrictions} />
                             </div>
                             <div>
                                 <p>Allergies</p>
@@ -154,6 +168,11 @@ export default class SignUp extends Component {
                             <TextField label="Age" placeholder="Age" type="age" onChange={this.handleChange} />
                             <TextField label="Height" placeholder="Height (in inches)" type="height" onChange={this.handleChange} />
                             <TextField label="Weight" placeholder="Weight (in pounds)" type="weight" onChange={this.handleChange} />
+                            <div>
+                                <p>Biological Sex</p>
+                                <CheckBox label="Male" onChange={this.handleChangeCheck} className="biologicalSex" checked={this.state.biologicalSex} />
+                                <CheckBox label="Female" onChange={this.handleChangeCheck} className="biologicalSex" checked={this.state.biologicalSex} />
+                            </div>
                             <TextField label="Daily Activity" placeholder="Number from 1 to 10" type="dailyActivity" onChange={this.handleChange} />
                             <TextField label="Stress" placeholder="Number from 1 to 10" type="stress" onChange={this.handleChange} />
                             <Button onClick={this.handleSubmit}>Sign Up</Button> <br />
