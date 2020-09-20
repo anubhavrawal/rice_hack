@@ -30,7 +30,8 @@ export default class Recipes extends Component {
             });
         }).then(() => {
             var num = 12;
-            var diet = this.state.dietaryRestrictions.toLowerCase();
+            var diet = this.state.dietaryRestrictions;
+            //var diet = this.state.dietaryRestrictions.toLowerCase();
             var intolerances = "";
 
             this.state.allergies.forEach((item, i) => {
@@ -45,11 +46,13 @@ export default class Recipes extends Component {
             intolerances = intolerances.toLowerCase();
 
             // var apiKey = "b599358e847b4871a0cd0b9d625b31a1";
-            var apiKey = "e984128ba237435a99a187288deffa96";
+            // var apiKey = "e984128ba237435a99a187288deffa96";
+            var apiKey = "0c95d8d5b2df4bbaae37e8d0904d3c5d";
             fetch("https://api.spoonacular.com/recipes/complexSearch?diet="+diet+"intolerances="+intolerances+"&addRecipeInformation=true&addRecipeNutrition=true&number="+num+"&apiKey="+apiKey).then(res => {
                 return res.json()
             }).then(res => {
                 this.setState({data: res});
+                console.log(this.state.data)
             });
         });
     }
@@ -65,7 +68,7 @@ export default class Recipes extends Component {
                         this.state && this.state.data &&
                         <div>
                             {this.state.data.results.map((obj, i) => (
-                                <SingleRecipe key={i} img={obj.image} title={obj.title} description={obj.summary} />
+                                <SingleRecipe key={i} addItem={this.props.addItem} img={obj.image} title={obj.title} description={obj.summary} recipe={obj} />
                             ))}
                         </div>
                     }
