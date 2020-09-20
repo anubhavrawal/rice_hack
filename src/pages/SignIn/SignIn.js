@@ -50,7 +50,7 @@ export default class SignIn extends Component {
                     :
                     <div className="signIn">
                         <Heading text="Sign In" icon="sign-in" />
-                        <Form onSubmit={this.handleSubmit}>
+                        <Form onSubmit={this.handleSubmit} className="signInForm">
                             <TextField label="Email" placeholder="Email address" type="email" onChange={this.handleChange} />
                             <TextField label="Password" placeholder="Password" type="password" onChange={this.handleChange} />
                             <Button onClick={this.handleSubmit}>Sign In</Button> <br />

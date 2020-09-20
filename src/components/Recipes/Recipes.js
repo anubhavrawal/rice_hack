@@ -11,11 +11,11 @@ export default class Recipes extends Component {
         var intolerances = ""
         var apiKey = "b599358e847b4871a0cd0b9d625b31a1"
         fetch("https://api.spoonacular.com/recipes/complexSearch?diet="+diet+"intolerances="+intolerances+"&addRecipeInformation=true&addRecipeNutrition=true&number="+num+"&apiKey="+apiKey).then(res => {
-      return res.json()
-    }).then(res => {
-        this.setState({data: res});
-        console.log(this.state.data)
-    })
+            return res.json()
+        }).then(res => {
+            this.setState({data: res});
+            console.log(this.state.data);
+        });
     }
 
 
@@ -27,8 +27,8 @@ export default class Recipes extends Component {
                     {
                         this.state && this.state.data &&
                         <div>
-                        {this.state.data.results.map(obj => (
-                            <SingleRecipe img={obj.image} title={obj.title} description={obj.summary} />
+                        {this.state.data.results.map((obj, i) => (
+                            <SingleRecipe key={i} img={obj.image} title={obj.title} description={obj.summary} />
                         ))}
 
                         </div>

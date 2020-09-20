@@ -5,3 +5,7 @@
     margin-bottom: 30px;
     margin-top: 0px;
 }
+
+#root .pageHeader i {
+    color: #00ffb7;
+}

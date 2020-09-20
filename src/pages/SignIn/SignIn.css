@@ -1,7 +1,17 @@
+#root .signIn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #root button {
     margin-top: 15px;
 }
 
 #root .signUpButton {
     margin-top: 25px;
+}
+
+#root .signInForm {
+    display: inline-block;
 }
