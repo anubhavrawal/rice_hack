@@ -17,7 +17,7 @@ export default class Dashboard extends Component {
                 </div>
                 <Heading text="Dashboard" icon="clipboard" />
                 <div className="dashboardContent">
-                    <Recipes />
+                    <Recipes userEmail={this.props.userEmail} />
                     <div className="dashboardRight">
                         <Calendar />
                         <hr />
