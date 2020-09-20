@@ -8,8 +8,8 @@ export default class Recipes extends Component {
     componentDidMount(){
         var num = 12;
         var diet = ""
-        var intolerances = ""
-        var apiKey = "b599358e847b4871a0cd0b9d625b31a1"
+        var intolerances = "dairy,gluten"
+        var apiKey = "e984128ba237435a99a187288deffa96" //"b599358e847b4871a0cd0b9d625b31a1"
         fetch("https://api.spoonacular.com/recipes/complexSearch?diet="+diet+"intolerances="+intolerances+"&addRecipeInformation=true&addRecipeNutrition=true&number="+num+"&apiKey="+apiKey).then(res => {
             return res.json()
         }).then(res => {

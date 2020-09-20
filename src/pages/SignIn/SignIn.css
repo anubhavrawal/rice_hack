@@ -9,7 +9,35 @@
 }
 
 #root .signUpButton {
-    margin-top: 25px;
+    margin-top: 15px;
+}
+
+.signIn {
+    text-align: center;
+    border-left: #2b772b 7px solid;
+    background-color: #cdfdcd;
+    padding: 25px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+}
+
+
+.textField {
+    text-align: left;
+    width:300px;
+}
+
+#logo {
+    height: 150px;
+    width: auto;
+}
+
+#wrap {
+    display: flex;
 }
 
 #root .signInForm {
