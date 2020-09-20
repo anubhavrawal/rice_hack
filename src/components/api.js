@@ -14,6 +14,8 @@ var num = 0
 var data = ""
 var apiKey = ""
 
+var isLoaded = false;
+
 //Makes the call to get info from spoonacular and stores the data
 export function xmlRequest() {
 	var requestURL = "https://api.spoonacular.com/recipes/complexSearch?diet="+diet+"intolerances="+intolerances+"&addRecipeInformation=true&addRecipeNutrition=true&number="+num+"&apiKey="+apiKey
@@ -26,15 +28,16 @@ export function xmlRequest() {
 	request.open('GET', requestURL, true)
 	request.onload = function(){
   	data = JSON.parse(this.response)
-  	console.log(data)
-	  makeBody(data)
+	  //makeBody(data)
+
+		return data
 	}
 	request.send()
 }
 
 //Makes the entires on #root
 function makeBody(menu) {
-	const app = document.getElementById('root')
+	const app = document.getElementById('potential')
   for(var i = 0; i < num; i++)
 	{
 		const text = document.createElement('p')
@@ -51,9 +54,12 @@ function makeBody(menu) {
 		card.setAttribute('class', 'card')
 		card.style.background = "url("+menu.results[i].image+") no-repeat"
 
+
 		card.append(text)
 		card.append(button)
 		app.append(card)
+
+
 	}
 }
 
@@ -62,7 +68,7 @@ function moreInfo(index) {
 	if(document.getElementById("popup") != null) {
 		document.getElementById("popup").remove()
 	}
-	const app = document.getElementById('root')
+	const app = document.getElementById('potential')
 
 	const text = document.createElement('div')
 	text.innerHTML = "<img class=\"popupImg\" src="+data.results[this.id].image+"></img" + data.results[this.id].summary
