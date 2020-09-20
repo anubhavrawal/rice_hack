@@ -64,9 +64,9 @@ export default class Recipes extends Component {
                     {
                         this.state && this.state.data &&
                         <div>
-                            {this.state.data.results.map((obj, i) => (
-                                <SingleRecipe key={i} img={obj.image} title={obj.title} description={obj.summary} />
-                            ))}
+                        {this.state.data.results.map((obj, i) => (
+                            <SingleRecipe addItem={this.props.addItem} key={i} recipe={obj} img={obj.image} title={obj.title} description={obj.summary} />
+                        ))}
                         </div>
                     }
                 </div>

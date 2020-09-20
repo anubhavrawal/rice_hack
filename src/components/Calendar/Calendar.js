@@ -29,6 +29,8 @@ export default class Calendar extends Component {
         }
         var date = (new Date(Date.now())).toString().split(' ');
         var month = date[1];
+        var dayOfWeek = date[0];
+        console.log(dayOfWeek)
         var day = parseInt(date[2]);
         var year = parseInt(date[3]);
         var monthInfo = months[month].split(' ');
@@ -36,17 +38,21 @@ export default class Calendar extends Component {
         var next = monthInfo[1];
 
         var tempDate = [];
-        tempDate.push([month, day, year]);
+        tempDate.push([dayOfWeek,month, day, year]);
+        var daysOfWeek = {"Mon":"Tue","Tue":"Wed","Wed":"Thu", "Thu":"Fri", "Fri":"Sat", "Sat":"Sun", "Sun":"Mon"};
         for(var i=0; i<6; i++){
             day += 1;
+            dayOfWeek = daysOfWeek[dayOfWeek]
+            console.log(dayOfWeek)
             if(days < day){
                 day = 1;
+                dayOfWeek = daysOfWeek[dayOfWeek]
                 month = next;
                 if(month === "Jan"){
                     year += 1
                 }
             }
-            tempDate.push([month, day, year])
+            tempDate.push([dayOfWeek,month, day, year])
         }
 
         this.setState({
@@ -60,13 +66,13 @@ export default class Calendar extends Component {
                 <Heading text="Calendar" />
                 {this.state.dates.length > 0 &&
                     <div className="calendarColumns">
-                        <CalendarColumn date={this.state.dates[0]} />
-                        <CalendarColumn date={this.state.dates[1]} />
-                        <CalendarColumn date={this.state.dates[2]} />
-                        <CalendarColumn date={this.state.dates[3]} />
-                        <CalendarColumn date={this.state.dates[4]} />
-                        <CalendarColumn date={this.state.dates[5]} />
-                        <CalendarColumn date={this.state.dates[6]} />
+                        <CalendarColumn removeItem={this.props.removeItem} day={0} recipes={this.props.addedRecipes[0]} date={this.state.dates[0]} />
+                        <CalendarColumn removeItem={this.props.removeItem} day={1} recipes={this.props.addedRecipes[1]} date={this.state.dates[1]} />
+                        <CalendarColumn removeItem={this.props.removeItem} day={2} recipes={this.props.addedRecipes[2]} date={this.state.dates[2]} />
+                        <CalendarColumn removeItem={this.props.removeItem} day={3} recipes={this.props.addedRecipes[3]} date={this.state.dates[3]} />
+                        <CalendarColumn removeItem={this.props.removeItem} day={4} recipes={this.props.addedRecipes[4]} date={this.state.dates[4]} />
+                        <CalendarColumn removeItem={this.props.removeItem} day={5} recipes={this.props.addedRecipes[5]} date={this.state.dates[5]} />
+                        <CalendarColumn removeItem={this.props.removeItem} day={6} recipes={this.props.addedRecipes[6]} date={this.state.dates[6]} />
                     </div>
                 }
             </div>

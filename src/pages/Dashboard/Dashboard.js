@@ -8,6 +8,37 @@ import SignOutButton from '../../components/SignOutButton/SignOutButton';
 import Profile from "../../components/Profile/Profile";
 
 export default class Dashboard extends Component {
+    state = {
+        addedRecipes:
+        [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ]
+    }
+
+    addItem = (obj, day) => {
+        let addedRecipesCopy = [...this.state.addedRecipes]
+        console.log("Day", day)
+        addedRecipesCopy[day].push(obj)
+        this.setState({
+            addedRecipes: addedRecipesCopy,
+        })
+    }
+
+    removeItem = (index, day) => {
+        let addedRecipesCopy = [...this.state.addedRecipes]
+        addedRecipesCopy[day].splice(index)
+        this.setState({
+            addedRecipes: addedRecipesCopy,
+            }
+        )
+    }
+
     render() {
         return (
             <div className="dashboard">
@@ -17,9 +48,9 @@ export default class Dashboard extends Component {
                 </div>
                 <Heading text="Dashboard" icon="clipboard" />
                 <div className="dashboardContent">
-                    <Recipes userEmail={this.props.userEmail} />
+                    <Recipes addItem={this.addItem} userEmail={this.props.userEmail} />
                     <div className="dashboardRight">
-                        <Calendar />
+                        <Calendar removeItem={this.removeItem} addedRecipes={this.state.addedRecipes}/>
                         <hr />
                         <ShoppingList />
                     </div>

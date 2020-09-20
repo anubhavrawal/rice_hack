@@ -7,3 +7,15 @@
 #root .calendarColumn {
     font-size: 18px;
 }
+
+#root .calendarContent {
+    width: 100px;
+    border-radius: 10px;
+    /* border: 1px solid gray; */
+    margin: 10px;
+    cursor: pointer;
+}
+
+#root .calendarContent:hover {
+    box-shadow: 5px 5px 10px lightgray;
+}
