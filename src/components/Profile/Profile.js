@@ -5,24 +5,24 @@ import {Button, Header, Icon, Modal} from "semantic-ui-react";
 
 class Profile extends Component {
     state = {
-        userInfo: null
+        userInfo: "Nothing Yet"
     }
 
     componentDidMount() {
         firebase.firestore().collection('Users').doc(this.props.userEmail).get().then((user) => {
-                this.setState({userInfo: user.data})
+                this.setState({userInfo: user.data()})
                 console.log(user)
-                console.log(user.data)
+                console.log(user.data())
             }
         )
     }
 
     render() {
+        console.log(this.state.userInfo)
         return (
             <div>
                 <Modal
-                    size="large"
-                    basic={false}
+                    size={"fullscreen"}
                     centered={true}
                     onClose={() => {
                         this.setState({
@@ -38,9 +38,11 @@ class Profile extends Component {
                     trigger={<Button icon={<Icon name="user" />}>Profile</Button>}
                 >
                     <Modal.Header>Your Health</Modal.Header>
-                    <div style={{ minHeight: "300px"}}>
-
-                    </div>
+                    <Modal.Content>
+                        <div style={{ minHeight: "300px"}}>
+                            {this.state.userInfo.age}
+                        </div>
+                    </Modal.Content>
                 </Modal>
             </div>
         );

@@ -69,7 +69,9 @@ export default class SignUp extends Component {
     handleSubmit(event){
         event.preventDefault();
 
+
         const db = firebase.firestore();
+
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(() => {
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(() => {
                 db.collection('Users').doc(this.state.email).set({
