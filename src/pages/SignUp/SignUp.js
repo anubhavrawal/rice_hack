@@ -3,7 +3,7 @@ import './SignUp.css';
 import TextField from '../../components/TextField/TextField';
 import Heading from '../../components/Heading/Heading';
 import CheckBox from '../../components/CheckBox/CheckBox';
-import {Button} from 'semantic-ui-react';
+import {Button, Form} from 'semantic-ui-react';
 import {Redirect} from 'react-router-dom';
 import firebase from '../../components/Firebase';
 import {v4} from 'uuid';
@@ -104,59 +104,61 @@ export default class SignUp extends Component {
                     :
                     <div className="signUp">
                         <Heading text="Sign Up" icon="signup" />
-                        <TextField label="First Name" placeholder="First Name" type="firstName" onChange={this.handleChange} />
-                        <TextField label="Last Name" placeholder="Last Name" type="lastName" onChange={this.handleChange} />
-                        <TextField label="Email" placeholder="Email address" type="email" onChange={this.handleChange} />
-                        <TextField label="Password" placeholder="Password" type="password" onChange={this.handleChange} />
-                        <div>
-                            <p>Dietary Restrictions</p>
-                            <CheckBox label="Gluten Free" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Ketogenic" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Vegan" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Lacto-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Ovo-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Pescetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Paleo" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Primal" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                            <CheckBox label="Whole30" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
-                        </div>
-                        <div>
-                            <p>Allergies</p>
-                            <CheckBox label="Dairy" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Egg" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Grain" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Seafood" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Peanut" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Sesame" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Shellfish" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Gluten" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Soy" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Sulfite" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Tree Nut" onChange={this.handleChangeCheck} className="allergies" />
-                            <CheckBox label="Wheat" onChange={this.handleChangeCheck} className="allergies" />
-                        </div>
-                        <div>
-                            <p>Pre-existing Conditions</p>
-                            <CheckBox label="Diabetic" onChange={this.handleChangeCheck} className="conditions" />
-                            <CheckBox label="Heart Conditions" onChange={this.handleChangeCheck} className="conditions" />
-                            <CheckBox label="High Blood Pressure" onChange={this.handleChangeCheck} className="conditions" />
-                            <CheckBox label="High Cholesterol" onChange={this.handleChangeCheck} className="conditions" />
-                        </div>
-                        <div>
-                            <p>Family History</p>
-                            <CheckBox label="Diabetic" onChange={this.handleChangeCheck} className="familyHistory" />
-                            <CheckBox label="Heart Conditions" onChange={this.handleChangeCheck} className="familyHistory" />
-                            <CheckBox label="High Blood Pressure" onChange={this.handleChangeCheck} className="familyHistory" />
-                            <CheckBox label="High Cholesterol" onChange={this.handleChangeCheck} className="familyHistory" />
-                        </div>
-                        <TextField label="Age" placeholder="Age" type="age" onChange={this.handleChange} />
-                        <TextField label="Height" placeholder="Height (in inches)" type="height" onChange={this.handleChange} />
-                        <TextField label="Weight" placeholder="Weight (in pounds)" type="weight" onChange={this.handleChange} />
-                        <TextField label="Daily Activity" placeholder="Number from 1 to 10" type="dailyActivity" onChange={this.handleChange} />
-                        <TextField label="Stress" placeholder="Number from 1 to 10" type="stress" onChange={this.handleChange} />
-                        <Button onClick={this.handleSubmit}>Sign Up</Button> <br />
-                        <Button className="signInButton" as="a" href="/">Already Have An Account?</Button>
+                        <Form className="signUpForm">
+                            <TextField label="First Name" placeholder="First Name" type="firstName" onChange={this.handleChange} />
+                            <TextField label="Last Name" placeholder="Last Name" type="lastName" onChange={this.handleChange} />
+                            <TextField label="Email" placeholder="Email address" type="email" onChange={this.handleChange} />
+                            <TextField label="Password" placeholder="Password" type="password" onChange={this.handleChange} />
+                            <div>
+                                <p>Dietary Restrictions</p>
+                                <CheckBox label="Gluten Free" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Ketogenic" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Vegan" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Lacto-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Ovo-vegetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Pescetarian" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Paleo" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Primal" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                                <CheckBox label="Whole30" onChange={this.handleChangeCheck} className="dietaryRestrictions" />
+                            </div>
+                            <div>
+                                <p>Allergies</p>
+                                <CheckBox label="Dairy" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Egg" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Grain" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Seafood" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Peanut" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Sesame" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Shellfish" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Gluten" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Soy" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Sulfite" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Tree Nut" onChange={this.handleChangeCheck} className="allergies" />
+                                <CheckBox label="Wheat" onChange={this.handleChangeCheck} className="allergies" />
+                            </div>
+                            <div>
+                                <p>Pre-existing Conditions</p>
+                                <CheckBox label="Diabetic" onChange={this.handleChangeCheck} className="conditions" />
+                                <CheckBox label="Heart Conditions" onChange={this.handleChangeCheck} className="conditions" />
+                                <CheckBox label="High Blood Pressure" onChange={this.handleChangeCheck} className="conditions" />
+                                <CheckBox label="High Cholesterol" onChange={this.handleChangeCheck} className="conditions" />
+                            </div>
+                            <div>
+                                <p>Family History</p>
+                                <CheckBox label="Diabetic" onChange={this.handleChangeCheck} className="familyHistory" />
+                                <CheckBox label="Heart Conditions" onChange={this.handleChangeCheck} className="familyHistory" />
+                                <CheckBox label="High Blood Pressure" onChange={this.handleChangeCheck} className="familyHistory" />
+                                <CheckBox label="High Cholesterol" onChange={this.handleChangeCheck} className="familyHistory" />
+                            </div>
+                            <TextField label="Age" placeholder="Age" type="age" onChange={this.handleChange} />
+                            <TextField label="Height" placeholder="Height (in inches)" type="height" onChange={this.handleChange} />
+                            <TextField label="Weight" placeholder="Weight (in pounds)" type="weight" onChange={this.handleChange} />
+                            <TextField label="Daily Activity" placeholder="Number from 1 to 10" type="dailyActivity" onChange={this.handleChange} />
+                            <TextField label="Stress" placeholder="Number from 1 to 10" type="stress" onChange={this.handleChange} />
+                            <Button onClick={this.handleSubmit}>Sign Up</Button> <br />
+                            <Button className="signInButton" as="a" href="/">Already Have An Account?</Button>
+                        </Form>
                     </div>
                 }
             </React.Fragment>
