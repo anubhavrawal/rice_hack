@@ -49,12 +49,15 @@ export default class SignIn extends Component {
                     }} />
                     :
                     <div className="signIn">
-                        <Heading text="Sign In" icon="sign-in" />
+                        <img id="logo" src="../logo.png"></img>
+                        <Heading text="Safe Menu" icon="" />
                         <Form onSubmit={this.handleSubmit} className="signInForm">
                             <TextField label="Email" placeholder="Email address" type="email" onChange={this.handleChange} />
                             <TextField label="Password" placeholder="Password" type="password" onChange={this.handleChange} />
+                            <div id="wrap">
                             <Button onClick={this.handleSubmit}>Sign In</Button> <br />
                             <Button className="signUpButton" as="a" href="/signUp">Don't Have An Account?</Button>
+                            </div>
                         </Form>
                     </div>
                 }

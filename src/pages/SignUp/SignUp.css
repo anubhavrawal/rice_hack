@@ -21,3 +21,14 @@
 #root .signUpForm {
     display: inline-block;
 }
+
+.signUp {
+    border-left: #2b772b 7px solid;
+    background-color: #cdfdcd;
+    padding: 25px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
