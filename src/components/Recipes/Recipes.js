@@ -6,7 +6,7 @@ import SingleRecipe from '../SingleRecipe/SingleRecipe';
 export default class Recipes extends Component {
 
     componentDidMount(){
-        var num = 9;
+        var num = 12;
         var diet = ""
         var intolerances = ""
         var apiKey = "b599358e847b4871a0cd0b9d625b31a1"
@@ -14,6 +14,7 @@ export default class Recipes extends Component {
       return res.json()
     }).then(res => {
         this.setState({data: res});
+        console.log(this.state.data)
     })
     }
 
@@ -26,15 +27,10 @@ export default class Recipes extends Component {
                     {
                         this.state && this.state.data &&
                         <div>
-                            <SingleRecipe img={this.state.data.results[0].image} title={this.state.data.results[0].title} description={this.state.data.results[0].summary}/>
-                            <SingleRecipe img={this.state.data.results[1].image} title={this.state.data.results[1].title} description={this.state.data.results[1].summary}/>
-                            <SingleRecipe img={this.state.data.results[2].image} title={this.state.data.results[2].title} description={this.state.data.results[2].summary}/>
-                            <SingleRecipe img={this.state.data.results[3].image} title={this.state.data.results[3].title} description={this.state.data.results[3].summary}/>
-                            <SingleRecipe img={this.state.data.results[4].image} title={this.state.data.results[4].title} description={this.state.data.results[4].summary}/>
-                            <SingleRecipe img={this.state.data.results[5].image} title={this.state.data.results[5].title} description={this.state.data.results[5].summary}/>
-                            <SingleRecipe img={this.state.data.results[6].image} title={this.state.data.results[6].title} description={this.state.data.results[6].summary}/>
-                            <SingleRecipe img={this.state.data.results[7].image} title={this.state.data.results[7].title} description={this.state.data.results[7].summary}/>
-                            <SingleRecipe img={this.state.data.results[8].image} title={this.state.data.results[8].title} description={this.state.data.results[8].summary}/>
+                        {this.state.data.results.map(obj => (
+                            <SingleRecipe img={obj.image} title={obj.title} description={obj.summary} />
+                        ))}
+
                         </div>
                     }
                 </div>
