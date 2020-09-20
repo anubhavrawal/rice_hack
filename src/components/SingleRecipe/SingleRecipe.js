@@ -5,10 +5,16 @@ import {Modal, Header, Button} from 'semantic-ui-react';
 export default class SingleRecipe extends Component {
     constructor(props){
         super(props);
-
         this.state = {
-            open: false
+            open: false,
+            img: props.img,
+            title: props.title,
+            description: props.description
         }
+    }
+
+    createMarkup() {
+      return {__html: this.state.description};
     }
 
     render() {
@@ -25,13 +31,15 @@ export default class SingleRecipe extends Component {
                     })
                 }}
                 open={this.state.open}
-                trigger={<div className="fillerRecipe"></div>}
+                trigger={<img className="fillerRecipe"
+                    src={this.state.img}
+                />}
             >
-                <Modal.Header>Filler Recipe</Modal.Header>
+                <Modal.Header>{this.state.title}</Modal.Header>
                 <Modal.Content>
                     <Modal.Description>
-                        <Header>Filler Stuff</Header>
-                        <p>Recipe Details</p>
+                        <Header>{this.state.title}</Header>
+                        <div dangerouslySetInnerHTML={this.createMarkup()}></div>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
