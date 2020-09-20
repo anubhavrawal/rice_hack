@@ -11,7 +11,8 @@ export default class CalendarColumn extends Component {
                     {this.props.date[0] + ' ' + this.props.date[1] + ' ' + this.props.date[2]}
                 </div>
                 <div className="calendarColumnContent">
-                    {this.props.recipes.map((obj, i) => (
+                    {
+                        this.props.recipes.map((obj, i) => (
                         <SingleRecipe removeItem={this.props.removeItem} recipeIndex={i} day={this.props.day} key={i} img={obj.image} title={obj.title} description={obj.summary} showRemove={true} />
                     ))}
                 </div>

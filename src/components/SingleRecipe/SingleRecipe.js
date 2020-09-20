@@ -22,7 +22,6 @@ export default class SingleRecipe extends Component {
     render() {
         var date = (new Date(Date.now())).toString().split(' ');
         var dayOfWeek = date[0];
-        console.log(dayOfWeek)
         var daysOfWeek = {"Mon":"Tue","Tue":"Wed","Wed":"Thu", "Thu":"Fri", "Fri":"Sat", "Sat":"Sun", "Sun":"Mon"};
 
         let dayOfWeekOptions = []

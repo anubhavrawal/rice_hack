@@ -8,7 +8,7 @@
     font-size: 18px;
 }
 
-#root .calendarContent {
+#root .fillerRecipe {
     width: 100px;
     border-radius: 10px;
     /* border: 1px solid gray; */
@@ -16,6 +16,6 @@
     cursor: pointer;
 }
 
-#root .calendarContent:hover {
+#root .fillerRecipe:hover {
     box-shadow: 5px 5px 10px lightgray;
 }
